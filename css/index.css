@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn+SC&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* colors */
+    --base: #F6F7EB;
+    --primary: #6E8894;
+    --secondary: #E69597;
+    --tertiary: #9e2b2574;
+    --text-color: #2b2b2b;
+
+    /* fonts */
+    --title-font: 'Vollkorn SC', serif;
+    --text-font: 'Open Sans', sans-serif;
+
+    /* spacings */
+    --spacing: 2rem;
+
+    /* font sizes */
+    --titles: 3.2em;
+    --subtitles: 2.4em;
+    --text: 2em;
+}
+
+html {
+    /* Para calcular por 10 los em y rem */
+    font-size: 62.5%;
+}
+
+body {
+    /* Este es el grid layout del sitio*/
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main aside"
+        "footer footer";
+    grid-template-columns: 6fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* A continuación el estilo común a todas las páginas */
+
+header {
+    /* El header incluye dos cajas, una con el logo y otra con los enlaces*/
+    background-color: var(--primary);
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing);
+}
+
+header a {
+    /* Formato para el texto del menú de navegación*/
+    text-decoration-line: none;
+    color: var(--text-color);
+    font-family: var(--title-font);
+    font-size: var(--subtitles);
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing);
+}
+
+nav ul div {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing)
+}
+
+ul li {
+    list-style-type: none;
+}
+
+p {
+    /* Formato para todo párrafo y texto por fuera de los títulos */
+    font-family: var(--text-font);
+    font-size: var(--text);
+    color: var(--text-color);
+}
+
+main {
+    grid-area: main;
+    background-color: var(--base);
+}
+
+aside {
+    /* formato flex para la sidebar */
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing);
+    background-color: var(--secondary);
+}
+
+.asideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing);
+}
+
+/* Formato para el footer */
+
+footer {
+    background-color: var(--primary);
+    grid-area: footer;
+    font-weight: bold;
+}
+
+footer section {
+    padding: var(--spacing);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    font-family: var(--title-font);
+}
+
+/* formato para los títulos */
+
+h1 {
+    font-family: var(--title-font);
+    font-size: var(--titles);
+}
+
+h2 {
+    font-family: var(--title-font);
+    font-size: var(--subtitles);
+}
+
+h3 {
+    font-family: var(--title-font);
+    font-size: var(--text);
+}
+
+.pageTitles {
+    /* Los títulos de cada página usan el mismo formato de flex */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing);
+    text-align: center;
+}
+
+/* A continuación empiezan los estilos para cada página en particular */
+
+/* Grid para la galería de la página de Inicio */
+
+.indexGallery {
+    display: grid;
+    grid-template-areas:
+        "fotoUno fotoDos"
+        "fotoTres fotoCuatro";
+    grid-template-rows: 362px 395px;
+    grid-template-columns: 624px 382px;
+    justify-content: center;
+    gap: var(--spacing);
+}
+
+.indexGallery__first-img {
+    grid-area: fotoUno;
+}
+.indexGallery__second-img {
+    grid-area: fotoDos;
+}
+.indexGallery__third-img {
+    grid-area: fotoTres;
+}
+.indexGallery__fourth-img {
+    grid-area: fotoCuatro;
+}
+
+/* Organización en flex para la página del Menú usando tarjetas */
+
+.menuCard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.menuCard__each {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    justify-content: center;
+    text-align: center;
+    background-color: var(--tertiary);
+    padding: var(--spacing);
+    border-radius: 10%;
+}
+
+.menuCard__each span {
+    font-weight: bold;
+}
+
+/* Presentación del staff en la páginas "Nosotros" con flex utilizando tarjetas */
+
+.nameCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.nameCard__each {
+    display: flex;
+    flex-direction: row;
+}
+
+.nameCard__each--reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.nameCard__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nameCard__name {
+    padding: var(--spacing);
+    text-align: center;
+}
+
+.nameCard__description {
+    padding: var(--spacing);
+    font-weight: 300;
+}
+
+.nameCard__image {
+    padding: var(--spacing);
+    border-radius: 10%;
+}
+
+/* Grid para la galería de paisajes en la página "Twin Peaks" */
+
+.landscapeGallery {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    grid-template-rows: 290px 248px;
+    justify-content: center;
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
+
+div p {
+    text-align: center;
+    padding: var(--spacing);
+}
+
+/* Estilo para la página de Contacto */
+
+.forms {
+    font-size: var(--text);
+    font-family: var(--text-font);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing);
+    padding: var(--spacing);
+}
+
+/* A continuación los media queries */
+
+@media screen and (max-width: 820px) {
+    :root {
+        --titles: 2.8em;
+        --subtitles: 2em;
+        --text: 2em;
+    }
+    /* Esta es la versión para celulares del grid */
+    body {
+        grid-template-areas:
+            "header"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: auto;
+        grid-template-rows: auto 1fr auto auto;
+        min-height: 100vh;
+    }
+
+    header {
+        flex-direction: column;
+    }
+
+    header ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer section {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing);
+    }
+
+    /* Formato de imágenes para adaptarse a pantallas de celular */
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Versión para celulares de la galería de la página inicio */
+    
+    .indexGallery {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Versión para celulares de la página Menú */
+
+    .menuCard {
+        flex-direction: column;
+        padding: var(--spacing);
+        gap: var(--spacing)
+    }
+
+    /* Versión para celulares de la página "Nosotros" */
+
+    .nameCard__each {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .nameCard__each--reverse {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Versión para celulares de la galería de la página "Twin Peaks" */
+
+    .landscapeGallery {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacing);
+        padding: var(--spacing);
+    }
+
+    .forms div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }    
+}
