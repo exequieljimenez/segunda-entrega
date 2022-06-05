@@ -20,11 +20,50 @@
 
     /* spacings */
     --spacing: 2rem;
+    --spacing-lesser: 1rem;
 
     /* font sizes */
     --titles: 3.2em;
     --subtitles: 2.4em;
     --text: 2em;
+}
+
+/* keyframes para animaciones */
+
+@keyframes from-left {
+    0% {
+        transform: translate(-1800px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes from-right {
+    0% {
+        transform: translate(1800px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes from-bottom {
+    0% {
+        transform: translate(0, 1800px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+@keyframes materialize {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 html {
@@ -64,6 +103,32 @@ header a {
     font-family: var(--title-font);
     font-size: var(--subtitles);
     font-weight: bold;
+    border: 2px solid rgba(255, 255, 255, 0);
+    transition: all 0.2s linear;
+}
+
+header a:hover {
+    border-bottom: 2px solid var(--text-color);
+    color: black;
+}
+
+.dropDownItem {
+    color: var(--text-color);
+}
+
+.dropDownItem:hover {
+    color: black;
+}
+
+.dropdownMod {
+    font-size: var(--subtitles);
+    
+}
+
+.dropdownitemMod {
+    font-family: var(--title-font);
+    font-size: var(--text);
+    font-weight: normal;
 }
 
 nav ul {
@@ -127,6 +192,11 @@ footer section {
     align-items: center;
 }
 
+footer article div {
+    display: flex;
+    justify-content: center;
+}
+
 footer p {
     font-family: var(--title-font);
 }
@@ -174,38 +244,33 @@ h3 {
 
 .indexGallery__first-img {
     grid-area: fotoUno;
+    animation-name: from-left;
+    animation-duration: 1s;
+
 }
 .indexGallery__second-img {
     grid-area: fotoDos;
+    animation-name: from-right;
+    animation-duration: 1s;
+
 }
 .indexGallery__third-img {
     grid-area: fotoTres;
+    animation-name: from-left;
+    animation-duration: 1s;
+    
 }
 .indexGallery__fourth-img {
     grid-area: fotoCuatro;
+    animation-name: from-right;
+    animation-duration: 1s;
 }
 
-/* Organización en flex para la página del Menú usando tarjetas */
+/* Para la página con el Menú del restaurant. Con accordion de Bootstrap */
 
-.menuCard {
+.menuItems {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.menuCard__each {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing);
-    justify-content: center;
-    text-align: center;
-    background-color: var(--tertiary);
-    padding: var(--spacing);
-    border-radius: 10%;
-}
-
-.menuCard__each span {
-    font-weight: bold;
+    gap: var(--spacing)
 }
 
 /* Presentación del staff en la páginas "Nosotros" con flex utilizando tarjetas */
@@ -214,17 +279,20 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .nameCard__each {
     display: flex;
     flex-direction: row;
+    max-width: 1200px;
+    gap: var(--spacing);
 }
 
 .nameCard__each--reverse {
     display: flex;
     flex-direction: row-reverse;
+    max-width: 1200px;
+    gap: var(--spacing)
 }
 
 .nameCard__text {
@@ -246,9 +314,34 @@ h3 {
 .nameCard__image {
     padding: var(--spacing);
     border-radius: 10%;
+    animation-name: materialize;
+    animation-duration: 1s;
+}
+
+.quoteList {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.quote {
+    padding: var(--spacing);
+    
+}
+
+.quoteItalic {
+    font-style: italic;
+    
+}
+
+.quote p {
+    padding: 0;
+    text-align: center;
 }
 
 /* Grid para la galería de paisajes en la página "Twin Peaks" */
+
+
 
 .landscapeGallery {
     display: grid;
@@ -257,11 +350,18 @@ h3 {
     justify-content: center;
     gap: var(--spacing);
     padding: var(--spacing);
+    animation-name: from-left;
+    animation-duration: 1s;
 }
 
 div p {
     text-align: center;
     padding: var(--spacing);
+}
+
+.historyText {
+    animation-name: from-bottom;
+    animation-duration: 1s;
 }
 
 /* Estilo para la página de Contacto */
@@ -275,6 +375,13 @@ div p {
     align-items: center;
     gap: var(--spacing);
     padding: var(--spacing);
+}
+
+input:focus {
+    border-top: solid 1px var(--text-color);;
+    border-right: solid 1px var(--text-color);
+    border-bottom: solid 2px black;
+    border-left: solid 2px black;
 }
 
 /* A continuación los media queries */
@@ -304,6 +411,8 @@ div p {
     header ul {
         flex-direction: column;
         align-items: center;
+        gap: var(--spacing-lesser);
+        padding-top: var(--spacing);
     }
 
     footer section {
