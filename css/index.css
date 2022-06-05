@@ -377,13 +377,6 @@ div p {
     padding: var(--spacing);
 }
 
-input:focus {
-    border-top: solid 1px var(--text-color);;
-    border-right: solid 1px var(--text-color);
-    border-bottom: solid 2px black;
-    border-left: solid 2px black;
-}
-
 /* A continuación los media queries */
 
 @media screen and (max-width: 820px) {
